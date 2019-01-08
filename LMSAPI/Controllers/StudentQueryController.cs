@@ -11,17 +11,32 @@ using System.Web.Http;
 
 namespace LMSAPI.Controllers
 {
-    public class StudentQueryController : ApiController
+    [RoutePrefix("api/StudentQuery")]
+    public class StudentQueryController : BaseQueryController<Student, StudentRequestModel,StudentGridViewModel>
     {
+        /*
         public IHttpActionResult Post(StudentRequestModel request)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest("bhai, Please sob field fill up koren");
             }
-            StudentService studentService = new StudentService();
-            List<StudentGridViewModel> students=studentService.Search(request);
+            StudentService service = new StudentService();
+            List<StudentGridViewModel> students = service.Search(request);
             return this.Ok(students);
         }
+        */
+        /*
+        public IHttpActionResult Search(StudentRequestModel request)
+            
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest("bhai, Please sob field fill up koren");
+            }
+                        var service = new BaseService<Student,StudentRequestModel,StudentViewModel>();
+                          var  students=service.Search(request);
+                         return this.Ok(students);
+        }*/
     }
 }

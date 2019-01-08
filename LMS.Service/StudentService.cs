@@ -12,23 +12,19 @@ using System.Threading.Tasks;
 
 namespace LMS.Service
 {
-    public class StudentService:BaseService<Student>
+    public class StudentService:BaseService<Student,StudentRequestModel,StudentViewModel>
     {
-        private BaseRepository<Student> studentRepository;
+       // private BaseRepository<Student> studentRepository;
 
         public StudentService()
         {
-            this.studentRepository = new BaseRepository<Student>();
+           // this.studentRepository = new BaseRepository<Student>();
         }
 
-        public bool Add(Student student)
-        {
-          
-           return studentRepository.Add(student);
-        }
+       
 
-        public List<StudentGridViewModel> Search(StudentRequestModel request )
-        {
+       // public List<StudentGridViewModel> Search(StudentRequestModel request )
+       // {
 
             //IQueryable<Student> students = this.studentRepository.Get();
 
@@ -96,14 +92,14 @@ namespace LMS.Service
             //students = students.Skip((request.Page - 1) * 10).Take(request.PerPageCount);    //paging
             //students = request.SkipAndTake(students);                                                                               //then we do the tolist(to fetch the resultant data to the memory)
 
-            var students = base.SearchQueryable(request);
+            //var students = base.SearchQueryable(request);
 
-            var list = students.ToList().ConvertAll(x => new StudentGridViewModel(x));    //hit to database  and execute the query
-          
-            return list;
-        }
+//var list = students.ToList().ConvertAll(x => new StudentGridViewModel(x));    //hit to database  and execute the query
+          //
+           // return list;
+       // }
 
-        public StudentDetailViewModel Detail(string id)
+       /* public StudentDetailViewModel Detail(string id)
         {
             Student x = this.studentRepository.GetDetail(id);
             if (x == null)
@@ -115,6 +111,6 @@ namespace LMS.Service
             StudentDetailViewModel vm = new StudentDetailViewModel(x);
 
             return vm;
-        }
+        }*/
     }
 }

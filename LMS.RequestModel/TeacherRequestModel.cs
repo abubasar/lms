@@ -10,18 +10,25 @@ namespace LMS.RequestModel
 {
    public class TeacherRequestModel:BaseRequestModel<Teacher>
     {
-        public Expression<Func<Teacher, bool>> expression;
+        public string Name { get; set; }
 
         public override Expression<Func<Teacher,bool>> GetExpression()
         {
-            this.expression = x => true;
+            
             if (!string.IsNullOrWhiteSpace(Keyword))
             {
-                this.expression = x => x.Name.Contains(Keyword);
+                this.ExpressionObject = x => x.Name.Contains(Keyword);
 
             }
-            return this.expression;
+
+            if (!string.IsNullOrWhiteSpace(Name))
+            {
+                this.ExpressionObject = x => x.Name.Contains(Name);
+
+            }
+
+            return this.ExpressionObject;
         }
-        //public string Keyword { get; set; }
+       
     }
 }

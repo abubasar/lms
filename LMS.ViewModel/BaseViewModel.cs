@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace LMS.ViewModel
 {
-   public class BaseViewModel
+   public class BaseViewModel<T> where T:BaseEntity
     {
         public BaseViewModel(BaseEntity entity)
         {

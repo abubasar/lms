@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace LMS.ViewModel
 {
-    public class TeacherDetailViewModel:BaseViewModel
+    public class TeacherDetailViewModel:BaseViewModel<Teacher>
     {
         public TeacherDetailViewModel(Teacher teacher):base(teacher)
         {

@@ -1,5 +1,7 @@
 ﻿using LMS.Model.Teachers;
+using LMS.RequestModel;
 using LMS.Service;
+using LMS.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,15 +11,9 @@ using System.Web.Http;
 
 namespace LMSAPI.Controllers
 {
-    public class TeacherController : ApiController
+    [RoutePrefix("api/Teacher")]
+    public class TeacherController :BaseController<Teacher,TeacherRequestModel,TeacherDetailViewModel>
     {
-        public IHttpActionResult Post(Teacher teacher)
-        {
-            TeacherService studentService = new TeacherService();
-
-            var isAdd = studentService.Add(teacher);
-            return Ok(isAdd);
-
-        }
+        
     }
 }

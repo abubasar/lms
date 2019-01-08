@@ -10,7 +10,10 @@ namespace LMS.RequestModel
 {
     public class StudentRequestModel:BaseRequestModel<Student>
     {
-        Expression<Func<Student, bool>> expression;
+        public string Name { get; set; }
+        public string Phone { get; set; }
+        public DateTime Modified { get; set; }
+
 
         public override Expression<Func<Student,bool>> GetExpression()
         {
@@ -28,14 +31,28 @@ namespace LMS.RequestModel
                 this.expression = x => x.Email.ToLower().Contains(this.Email.ToLower());
             }
             */
-            this.expression = x => true;
+
+           
+            
 
             if (!string.IsNullOrWhiteSpace(this.Keyword))
             {
-                this.expression = x => x.Name.Contains(Keyword) || x.Phone.Contains(Keyword) || x.Email.Contains(Keyword);
+                this.ExpressionObject = x => x.Name.Contains(Keyword) || x.Phone.Contains(Keyword) || x.Email.Contains(Keyword);
             }
 
-            return this.expression;
+            if (!string.IsNullOrWhiteSpace(Name))
+            {
+               this.ExpressionObject=x => x.Name.Contains(Name);
+            }
+
+            if (!string.IsNullOrWhiteSpace(Phone))
+            {
+                this.ExpressionObject =x => x.Phone.Contains(Phone);
+            }
+
+         //this.ExpressionObject =this.GenerateBaseExpression();
+
+            return this.ExpressionObject;
         }
        
        
@@ -45,5 +62,7 @@ namespace LMS.RequestModel
         //public string Email { get; set; }
 
        // public string Keyword { get; set; }
+
+       
     }
 }

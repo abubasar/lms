@@ -12,23 +12,19 @@ using System.Threading.Tasks;
 
 namespace LMS.Service
 {
-    public class TeacherService:BaseService<Teacher>
+    public class TeacherService:BaseService<Teacher,TeacherRequestModel,TeacherDetailViewModel>
     {
-        private BaseRepository<Teacher> teacherRepository;
+       // private BaseRepository<Teacher> teacherRepository;
 
         public TeacherService()
         {
-            this.teacherRepository = new BaseRepository<Teacher>();
+            //this.teacherRepository = new BaseRepository<Teacher>();
         }
 
-        public bool Add(Teacher teacher)
-        {
+      
 
-            return teacherRepository.Add(teacher);
-        }
-
-        public List<TeacherGridViewModel> Search(TeacherRequestModel request)
-        {
+        //public List<TeacherGridViewModel> Search(TeacherRequestModel request)
+        //{
             //Expression<Func<Teacher,bool>> expression=request.GetExpression();
 
             //we need a queryable variable
@@ -79,13 +75,13 @@ namespace LMS.Service
 
             //teachers = request.SkipAndTake(teachers);                                                                           //then we do the tolist(to fetch the resultant data to the memory)
 
-            var teachers = base.SearchQueryable(request);
-            var list =teachers.ToList().ConvertAll(x => new TeacherGridViewModel(x));    //hit to database  and execute the query
+            //var teachers = base.SearchQueryable(request);
+            //var list =teachers.ToList().ConvertAll(x => new TeacherGridViewModel(x));    //hit to database  and execute the query
 
-            return list;
-        }
+            //return list;
+       // }
 
-        public TeacherDetailViewModel Detail(string id)
+       /* public TeacherDetailViewModel Detail(string id)
         {
             Teacher x = this.teacherRepository.GetDetail(id);
             if (x == null)
@@ -96,7 +92,9 @@ namespace LMS.Service
 
             TeacherDetailViewModel vm = new TeacherDetailViewModel(x);
 
-            return vm;
+            return vm;*/
         }
     }
-}
+
+
+

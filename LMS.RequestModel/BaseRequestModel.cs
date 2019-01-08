@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LMS.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
@@ -7,12 +8,15 @@ using System.Threading.Tasks;
 
 namespace LMS.RequestModel
 {
-    public abstract class BaseRequestModel<T>
+    public abstract class BaseRequestModel<T> where T:BaseEntity
     {
+        protected Expression<Func<T, bool>> ExpressionObject = e => true;// protected:-ai property ta baserequestmodel er bassa jara tara pabe
         public BaseRequestModel()
         {
             PerPageCount = 10;
             Page = 1;
+            this.ExpressionObject = x => true;//initializing the expressionObject true
+
         }
 
         public int Page { get; set; }
@@ -54,7 +58,32 @@ namespace LMS.RequestModel
         
         }
 
+       
+
+
         public abstract Expression<Func<T, bool>> GetExpression();
+
+
+        /*
+        public DateTime Start { get; set; }
+
+        public DateTime End { get; set; }
+
+        protected Expression<Func<T,bool>> GenerateBaseExpression()
+        {
+            Expression<Func<T, bool>> expression = e => true;
+            if(Start!=new DateTime())
+            {
+                if(End==new DateTime())
+                {
+                    End = Start.Date.AddDays(1).AddMinutes(-1);
+                }
+                expression= expression.ReduceAndCheck(x => x.Modified >= Start && x.Modified <= End);
+            }
+
+            return expression;
+        }
+*/
 
     }
 }
