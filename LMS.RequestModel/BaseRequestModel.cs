@@ -63,8 +63,8 @@ namespace LMS.RequestModel
 
         public abstract Expression<Func<T, bool>> GetExpression();
 
-
         /*
+        
         public DateTime Start { get; set; }
 
         public DateTime End { get; set; }
@@ -78,7 +78,7 @@ namespace LMS.RequestModel
                 {
                     End = Start.Date.AddDays(1).AddMinutes(-1);
                 }
-                expression= expression.ReduceAndCheck(x => x.Modified >= Start && x.Modified <= End);
+                expression= expression.And(x => x.Modified >= Start && x.Modified <= End);
             }
 
             return expression;

@@ -1,4 +1,5 @@
 ﻿
+using LMS.Model.Courses;
 using LMS.Model.Students;
 using LMS.Model.Teachers;
 using System;
@@ -19,7 +20,8 @@ namespace LMS.Model
         public DbSet<Student> Students { get; set; }
 
         public DbSet<Teacher> Teachers { get; set; }
+        public DbSet<Course> Courses { get; set; }
 
-       
+
     }
 }

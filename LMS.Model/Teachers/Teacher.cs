@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LMS.Model.Courses;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -14,6 +15,22 @@ namespace LMS.Model.Teachers
         [Required]
         [MaxLength(50)]
         public string Name { get; set; }
+        [Index]
+        [Required]
+        [MaxLength(50)]
+        public string Designation { get; set; }
+        [Index]
+        [Required]
+        [MaxLength(50)]
+        public string Details { get; set; }
+       
+        public int StudentsCount { get; set; }
+        [Required]
+        public int CoursesCount { get; set; }
+        
+        public int ReviewsCount { get; set; }
+        public virtual ICollection<Course> Courses { get; set; }
+
 
     }
 }
