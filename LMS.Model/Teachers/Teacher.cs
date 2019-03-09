@@ -15,15 +15,25 @@ namespace LMS.Model.Teachers
         [Required]
         [MaxLength(50)]
         public string Name { get; set; }
-        [Index]
-        [Required]
-        [MaxLength(50)]
-        public string Designation { get; set; }
-        [Index]
-        [Required]
-        [MaxLength(50)]
-        public string Details { get; set; }
        
+        [Index]
+        [Required]
+        [MaxLength(50)]
+        public string Email { get; set; }
+        [Index]
+        [Required]
+        [MaxLength(20)]
+        public string Phone { get; set; }
+        [Required]
+        [MaxLength(100)]
+        public string Address { get; set; }
+
+        [Required]
+        [MaxLength(100)]
+        public string Designation { get; set; }
+        [MaxLength(500)]
+        public string Details { get; set; }
+
         public int StudentsCount { get; set; }
         [Required]
         public int CoursesCount { get; set; }

@@ -25,13 +25,14 @@ namespace LMS.Service
               students = request.OrderByFunc()(students);
               students = request.SkipAndTake(students);  */
 
-            IQueryable<T> students = repository.Get();
+            IQueryable<T> queryble = repository.Get();
             var expression = request.GetExpression();
-            students = students.Where(expression);
-            students = request.OrderByFunc()(students);
-            students = request.SkipAndTake(students);
+            queryble = queryble.Where(expression);
+            queryble = request.OrderByFunc()(queryble);
+            queryble = request.SkipAndTake(queryble);
+            queryble = request.IncludeParents(queryble);
 
-            return students;
+            return queryble;
         }
 
         public bool Add(T model)

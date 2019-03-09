@@ -14,9 +14,14 @@ namespace LMS.RequestModel
         {
             if (!string.IsNullOrWhiteSpace(this.Keyword))
             {
-                this.ExpressionObject = x => x.Title.Contains(Keyword) || x.Tags.Contains(Keyword) || x.Price.ToString().Contains(Keyword)||x.CourseShortDescription.Contains(Keyword);
+                this.ExpressionObject = x => x.Title.Contains(Keyword) || x.Tags.Contains(Keyword)||x.Teacher.Name.Contains(Keyword);
             }
             return this.ExpressionObject;
+        }
+
+        public override IQueryable<Course> IncludeParents(IQueryable<Course> queryable)
+        {
+            return IncludeParents(queryable);
         }
     }
 }
