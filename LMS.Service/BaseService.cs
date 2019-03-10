@@ -17,7 +17,7 @@ namespace LMS.Service
         BaseRepository<T> repository = new BaseRepository<T>();
         public IQueryable<T> SearchQueryable(BaseRequestModel<T> request)
         {
-          
+            request.OrderBy = "modified";
 
             /*  IQueryable<Student> students = this.studentRepository.Get();
               Expression<Func<Student, bool>> expression = request.GetExpression();
@@ -39,6 +39,12 @@ namespace LMS.Service
         {
 
             return repository.Add(model);
+        }
+
+        public T GetById(string id)
+        {
+
+            return repository.GetDetail(id);
         }
 
         public Tv Detail(string id)

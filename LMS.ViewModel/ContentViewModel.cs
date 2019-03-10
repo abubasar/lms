@@ -29,7 +29,7 @@ namespace LMS.ViewModel
         public string Description { get; set; }
         public string Url { get; set; }
         public string Tags { get; set; }
-        public int Category { get; set; }
+        public string Category { get; set; }
         public string CourseTitle { get; set; }
     }
 }

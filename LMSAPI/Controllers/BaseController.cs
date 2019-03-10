@@ -22,11 +22,24 @@ namespace LMSAPI.Controllers
             {
                 return BadRequest("Bhai cob field sob field fill up koren");
             }
+           
             model.Id = Guid.NewGuid().ToString();
             var service = new BaseService<T, TR, TV>();
 
             var add = service.Add(model);
             return Ok(add);
+
+        }
+
+        [Route("Get/{id}")]
+        [ActionName("GET")]
+        [HttpGet()]
+        public IHttpActionResult Get(string id)
+        {
+            var service = new BaseService<T, TR, TV>();
+
+            var model = service.GetById(id);
+            return Ok(model);
 
         }
     }

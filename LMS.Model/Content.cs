@@ -42,6 +42,6 @@ namespace LMS.Model
         public string Tags { get; set; }
 
         [Required]
-        public int Category { get; set; }
+        public string Category { get; set; }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using LMS.Model.Courses;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
@@ -21,7 +22,7 @@ namespace LMS.RequestModel
 
         public override IQueryable<Course> IncludeParents(IQueryable<Course> queryable)
         {
-            return IncludeParents(queryable);
+            return queryable.Include(x=>x.Teacher);
         }
     }
 }

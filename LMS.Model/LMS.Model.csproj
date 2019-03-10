@@ -65,6 +65,10 @@
     <Compile Include="Migrations\201903091137407_ultimate.Designer.cs">
       <DependentUpon>201903091137407_ultimate.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201903100933459_categoryString.cs" />
+    <Compile Include="Migrations\201903100933459_categoryString.Designer.cs">
+      <DependentUpon>201903100933459_categoryString.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StudentContent.cs" />
@@ -84,6 +88,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201903091137407_ultimate.resx">
       <DependentUpon>201903091137407_ultimate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201903100933459_categoryString.resx">
+      <DependentUpon>201903100933459_categoryString.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
